@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ml.empee</groupId>
+        <artifactId>AbstractParent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>SeniorTrial</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <plugin.api>1.19</plugin.api>
+        <plugin.main>ml.empee.seniorTrial.SeniorTrialPlugin</plugin.main>
+
+        <plugin.paper.version>1.19.2-R0.1-SNAPSHOT</plugin.paper.version>
+        <plugin.output-dir>${env.MINECRAFT_PLUGIN_OUTPUT_DIR}\1.19.2</plugin.output-dir>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>ml.empee</groupId>
+            <artifactId>commandsManager</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ml.empee</groupId>
+            <artifactId>configsManager</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stefvanschie.inventoryframework</groupId>
+            <artifactId>IF</artifactId>
+            <version>0.10.8</version>
+        </dependency>
+    </dependencies>
+
+</project>

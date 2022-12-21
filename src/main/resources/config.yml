@@ -1,0 +1,5 @@
+mongo:
+  srv-protocol: true
+  host: "testingcluster.istt6au.mongodb.net"
+  username: "anonymous"
+  password: "anonymous"
