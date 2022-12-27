@@ -6,7 +6,7 @@ import ml.empee.commandsManager.parsers.types.annotations.IntegerParam;
 import ml.empee.seniorTrial.utils.helpers.plugin.StoppableBean;
 import org.bukkit.command.CommandSender;
 
-@CommandNode(label = "rg", aliases = {"region"})
+@CommandNode(label = "rg", aliases = {"region"}, exitNode = false)
 public class PluginController extends CommandExecutor implements StoppableBean {
 
   public PluginController() {
