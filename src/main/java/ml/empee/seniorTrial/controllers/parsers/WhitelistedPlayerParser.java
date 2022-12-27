@@ -1,5 +1,8 @@
 package ml.empee.seniorTrial.controllers.parsers;
 
+import com.mongodb.client.model.Collation;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,12 +38,13 @@ public class WhitelistedPlayerParser extends ParameterParser<OfflinePlayer> {
 
   @Override
   protected List<String> buildSuggestions(CommandSender source, int offset, String[] args) {
-    return regionService.findByName(args[offset-1]).get()
-        .getWhitelist().stream()
-        .map(Bukkit::getOfflinePlayer)
-        .map(OfflinePlayer::getName)
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
+    return regionService.findByName(args[offset-1]).map( r -> r
+            .getWhitelist().stream()
+            .map(Bukkit::getOfflinePlayer)
+            .map(OfflinePlayer::getName)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList())
+        ).orElse(new ArrayList<>());
   }
 
   @Override
