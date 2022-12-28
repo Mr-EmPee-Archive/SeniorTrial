@@ -5,48 +5,39 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import ml.empee.seniorTrial.SeniorTrialPlugin;
 import ml.empee.seniorTrial.controllers.RegionController;
 import ml.empee.seniorTrial.model.Permissions;
 import ml.empee.seniorTrial.model.SeniorRegion;
 import ml.empee.seniorTrial.utils.MCLogger;
 import ml.empee.seniorTrial.utils.helpers.ItemBuilder;
+import ml.empee.seniorTrial.utils.helpers.view.PaginatedMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class WhitelistRemoveMenu {
+public class WhitelistRemoveMenu extends PaginatedMenu {
 
-  private final ChestGui gui = new ChestGui(6, "Whitelist remove");
   private final RegionController regionController;
   private final SeniorRegion region;
 
-  public static void open(RegionController regionController, SeniorRegion region, Player player) {
+  private WhitelistRemoveMenu(SeniorRegion region) {
+    super("Whitelist remove");
+
+    this.region = region;
+    this.regionController = SeniorTrialPlugin.getBean(RegionController.class);
+  }
+
+  public static void open(SeniorRegion region, Player player) {
     if(player.hasPermission(Permissions.WHITE_LIST_REMOVE)) {
-      new WhitelistRemoveMenu(regionController, region).open(player);
+      new WhitelistRemoveMenu(region).show(player);
     } else {
       MCLogger.error(player, "You can't open this menu!");
       player.closeInventory();
     }
-  }
-
-  private WhitelistRemoveMenu(RegionController regionController, SeniorRegion region) {
-    this.regionController = regionController;
-    this.region = region;
-
-    setupGui();
-  }
-
-  public void open(Player player) {
-    gui.show(player);
-  }
-
-  private void setupGui() {
-    gui.setOnGlobalClick(e -> e.setCancelled(true));
-
-    PaginatedPane pane = new PaginatedPane(9, 5);
-    pane.populateWithGuiItems(getWhitelistedPlayerSkulls());
-    gui.addPane(pane);
   }
 
   private List<GuiItem> getWhitelistedPlayerSkulls() {
@@ -65,4 +56,8 @@ public class WhitelistRemoveMenu {
     ).build();
   }
 
+  @Override
+  protected List<GuiItem> populateMenu() {
+    return getWhitelistedPlayerSkulls();
+  }
 }

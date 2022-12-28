@@ -3,6 +3,9 @@ package ml.empee.seniorTrial.controllers.views;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.AnvilGui;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import ml.empee.seniorTrial.SeniorTrialPlugin;
 import ml.empee.seniorTrial.controllers.RegionController;
 import ml.empee.seniorTrial.model.SeniorRegion;
 import ml.empee.seniorTrial.utils.helpers.ItemBuilder;
@@ -11,24 +14,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class RenameRegionMenu {
 
   private final AnvilGui gui = new AnvilGui("Rename region");
   private final RegionController regionController;
   private final SeniorRegion region;
 
-  public static void open(RegionController regionController, SeniorRegion region, Player player) {
-    new RenameRegionMenu(regionController, region).open(player);
+  public static void open(SeniorRegion region, Player player) {
+    new RenameRegionMenu(
+        SeniorTrialPlugin.getBean(RegionController.class),
+        region
+    ).show(player);
   }
 
-  private RenameRegionMenu(RegionController regionController, SeniorRegion region) {
-    this.regionController = regionController;
-    this.region = region;
-
+  public void show(Player player) {
     setupGui();
-  }
-
-  public void open(Player player) {
     gui.show(player);
   }
 

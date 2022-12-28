@@ -3,6 +3,7 @@ package ml.empee.seniorTrial.controllers.views;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
+import ml.empee.seniorTrial.SeniorTrialPlugin;
 import ml.empee.seniorTrial.controllers.RegionController;
 import ml.empee.seniorTrial.model.SeniorRegion;
 import ml.empee.seniorTrial.utils.helpers.ItemBuilder;
@@ -15,8 +16,11 @@ public class RegionMenu {
   private final RegionController regionController;
   private final SeniorRegion region;
 
-  public static void open(RegionController regionController, SeniorRegion region, Player player) {
-    new RegionMenu(regionController, region).open(player);
+  public static void open(SeniorRegion region, Player player) {
+    new RegionMenu(
+        SeniorTrialPlugin.getBean(RegionController.class),
+        region
+    ).open(player);
   }
 
   private RegionMenu(RegionController regionController, SeniorRegion region) {
@@ -50,7 +54,7 @@ public class RegionMenu {
         ).build();
 
     return new GuiItem(item, e ->
-        WhitelistAddMenu.open(regionController, region, (Player) e.getWhoClicked())
+        WhitelistAddMenu.open(region, (Player) e.getWhoClicked())
     );
   }
 
@@ -62,7 +66,7 @@ public class RegionMenu {
         ).build();
 
     return new GuiItem(item, e ->
-        WhitelistRemoveMenu.open(regionController, region, (Player) e.getWhoClicked())
+        WhitelistRemoveMenu.open(region, (Player) e.getWhoClicked())
     );
   }
 
@@ -88,7 +92,7 @@ public class RegionMenu {
         ).build();
 
     return new GuiItem(item, e ->
-        RenameRegionMenu.open(regionController, region, (Player) e.getWhoClicked())
+        RenameRegionMenu.open(region, (Player) e.getWhoClicked())
     );
   }
 

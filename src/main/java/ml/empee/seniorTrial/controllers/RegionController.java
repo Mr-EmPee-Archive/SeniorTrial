@@ -23,11 +23,9 @@ public class RegionController extends Controller {
 
   private static final PlayerContext<Location[]> regionCornersContext = PlayerContext.get("regionCornersContext");
   private final RegionService regionService;
-  private final RegionsListMenu regionsListMenu;
 
   public RegionController() {
     this.regionService = SeniorTrialPlugin.getBean(RegionService.class);
-    this.regionsListMenu = new RegionsListMenu(this, regionService);
     registerListeners(new RegionDefiner());
   }
 
@@ -37,7 +35,7 @@ public class RegionController extends Controller {
       permission = Permissions.REGION_MENU
   )
   public void openRegionsListMenu(Player sender) {
-    regionsListMenu.open(sender);
+    RegionsListMenu.open(sender);
   }
 
   @CommandNode(
@@ -47,7 +45,7 @@ public class RegionController extends Controller {
       description = "Opens the region management menu"
   )
   public void openRegionManagementMenu(Player sender, SeniorRegion region) {
-    RegionMenu.open(this, region, sender);
+    RegionMenu.open(region, sender);
   }
 
   @CommandNode(
