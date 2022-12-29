@@ -38,7 +38,7 @@ public class Config extends ConfigFile implements StoppableBean {
     try {
       mongoClient = MongoDBUtils.buildMongoClient(username, password, host, useSrv);
     } catch (Exception e) {
-      throw new RuntimeException("Failed to connect to MongoDB", e);
+      throw new RuntimeException("Failed to build client to communicate with db", e);
     }
 
     return mongoClient;
