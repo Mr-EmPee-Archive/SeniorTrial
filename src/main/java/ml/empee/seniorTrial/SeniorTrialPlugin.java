@@ -1,5 +1,6 @@
 package ml.empee.seniorTrial;
 
+import com.mongodb.BasicDBObject;
 import ml.empee.commandsManager.CommandManager;
 import ml.empee.commandsManager.command.CommandExecutor;
 import ml.empee.commandsManager.parsers.ParserManager;
@@ -30,6 +31,18 @@ public final class SeniorTrialPlugin extends AbstractPlugin {
     addServices();
     addCommands();
     addListeners();
+
+    testDbConnection();
+  }
+
+  private void testDbConnection() {
+    try {
+      MCLogger.info("Testing database connection...");
+      getBean(Config.class).getMongoDatabase().runCommand(new BasicDBObject("ping", "1"));
+      MCLogger.info("Test succeeded!");
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to connect to MongoDB", e);
+    }
   }
 
   private void addServices() {
