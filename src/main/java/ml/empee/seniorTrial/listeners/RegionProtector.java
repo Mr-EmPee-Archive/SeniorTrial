@@ -1,6 +1,5 @@
 package ml.empee.seniorTrial.listeners;
 
-import lombok.RequiredArgsConstructor;
 import ml.empee.seniorTrial.SeniorTrialPlugin;
 import ml.empee.seniorTrial.model.Permissions;
 import ml.empee.seniorTrial.services.RegionService;

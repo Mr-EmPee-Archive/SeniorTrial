@@ -2,7 +2,6 @@ package ml.empee.seniorTrial.controllers.parsers;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
 import ml.empee.commandsManager.parsers.DescriptionBuilder;
 import ml.empee.commandsManager.parsers.ParameterParser;
 import ml.empee.seniorTrial.SeniorTrialPlugin;

@@ -1,8 +1,6 @@
 package ml.empee.seniorTrial.controllers.views;
 
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
-import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
-import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
 import java.util.List;
 import java.util.stream.Collectors;
 import ml.empee.seniorTrial.SeniorTrialPlugin;

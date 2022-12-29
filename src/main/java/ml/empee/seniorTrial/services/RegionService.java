@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import ml.empee.seniorTrial.model.SeniorRegion;
 import ml.empee.seniorTrial.repositories.RegionRepo;
-import ml.empee.seniorTrial.utils.helpers.plugin.StoppableBean;
 import org.bson.types.ObjectId;
 import org.bukkit.Location;
 

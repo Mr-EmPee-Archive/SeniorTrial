@@ -1,19 +1,9 @@
 package ml.empee.seniorTrial.controllers.views;
 
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
-import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
-import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
-import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
-import com.github.stefvanschie.inventoryframework.pane.Pane;
-import com.github.stefvanschie.inventoryframework.pane.PatternPane;
-import com.github.stefvanschie.inventoryframework.pane.StaticPane;
-import com.github.stefvanschie.inventoryframework.pane.util.Pattern;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import ml.empee.seniorTrial.SeniorTrialPlugin;
-import ml.empee.seniorTrial.controllers.RegionController;
 import ml.empee.seniorTrial.model.SeniorRegion;
 import ml.empee.seniorTrial.services.RegionService;
 import ml.empee.seniorTrial.utils.helpers.ItemBuilder;
