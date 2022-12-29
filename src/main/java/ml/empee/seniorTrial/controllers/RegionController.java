@@ -4,7 +4,7 @@ import ml.empee.commandsManager.command.CommandNode;
 import ml.empee.commandsManager.command.Controller;
 import ml.empee.seniorTrial.SeniorTrialPlugin;
 import ml.empee.seniorTrial.controllers.listeners.RegionDefiner;
-import ml.empee.seniorTrial.controllers.parsers.annotations.WhitelistedPlayerParam;
+import ml.empee.seniorTrial.controllers.parsers.annotations.WhitelistedPlayer;
 import ml.empee.seniorTrial.controllers.views.RegionMenu;
 import ml.empee.seniorTrial.controllers.views.RegionsListMenu;
 import ml.empee.seniorTrial.model.Permissions;
@@ -122,7 +122,8 @@ public class RegionController extends Controller {
       permission = Permissions.WHITE_LIST_REMOVE,
       description = "Remove a player from a region's whitelist"
   )
-  public void whitelistRemove(CommandSender sender, SeniorRegion region, @WhitelistedPlayerParam OfflinePlayer player) {
+  public void whitelistRemove(CommandSender sender, SeniorRegion region, @WhitelistedPlayer
+  OfflinePlayer player) {
     region.getWhitelist().remove(player.getUniqueId());
     regionService.update(region.getId(), region);
 
